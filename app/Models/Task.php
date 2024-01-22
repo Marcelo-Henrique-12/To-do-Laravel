@@ -9,9 +9,11 @@ use App\Models\Category;
 
 class Task extends Model
 {
+    protected $table = 'tasks';
     use HasFactory;
 
     protected $fillable =[
+        'is_done',
         'title',
         'description',
         'due_date',
