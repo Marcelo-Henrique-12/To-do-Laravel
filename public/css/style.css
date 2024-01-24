@@ -255,3 +255,8 @@ h2{
     padding: 5px 10px;
     background-color: rgba(255, 255, 255, 0.5)
 }
+
+.invalid-feedback{
+    color: red;
+    margin-bottom: 20px;
+}

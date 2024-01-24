@@ -5,10 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
     //
+    public function update(Request $request)
+    {
+        $task = Task::findOrFail($request->taskId);
+        $task->is_done = $request->status;
+        $task->save();
+        return ['success'=> true];
+    }
+
     public function index()
     {
     }
@@ -27,7 +36,7 @@ class TaskController extends Controller
     public function create_action(Request $request)
     {
         $task = $request->only(['title', 'category_id', 'description', 'due_date']);
-
+        $task['user_id'] = Auth::user()->id;
         $dbTask = Task::create($task);
         return redirect(route('home'));
     }
@@ -56,7 +65,7 @@ class TaskController extends Controller
         $request_data = $request->only(['title','due_date','category_id','description']);
 
         $request_data['is_done'] = $request->is_done ? true : false;
-        
+
         $task = Task::find($request->id);
         if (!$task) {
             return redirect(route('home'));
