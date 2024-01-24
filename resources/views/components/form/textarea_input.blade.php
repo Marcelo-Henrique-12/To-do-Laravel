@@ -6,5 +6,5 @@
     </label>
 
     <textarea name="{{$name}}" id="{{$name}}"  placeholder=" {{$placeholder ?? ''}}"
-     {{empty($required) ? '' : 'required'}} ></textarea>
+     {{empty($required) ? '' : 'required'}} >{{$value ?? ''}}</textarea>
 </div>

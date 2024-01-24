@@ -5,11 +5,11 @@
        {{$label ?? ''}}
     </label>
     <input
-    type="{{empty($type) ? 'text' : $type}}"
+    type= "checkbox"
     id="{{$name}}"
-    name="{{$name}}"
-    placeholder=" {{$placeholder ?? ''}}"
-    value = "{{$value ?? ''}}"
     {{empty($required) ? '' : 'required'}}
+    name="{{$name}}"
+    value = "1"
+    {{$checked ? 'checked' : ''}}
      />
 </div>
